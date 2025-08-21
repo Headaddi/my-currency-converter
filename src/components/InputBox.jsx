@@ -1,0 +1,64 @@
+ 
+import React, {useId} from 'react'
+
+function InputBox({
+    label,
+    amount,
+    onAmountChange,
+    onCurrencyChange,
+    currencyOption = [],
+    selectedCurrency = 'USD',
+    amountDisabled = false,
+    currencyDisabled = false,
+    className = "",
+}) {
+
+
+    const id = useId()
+
+
+    return (
+        <div className={`bg-white p-3 rounded-lg text-sm flex items-center ${className}`}>
+            <div className="w-1-2">
+                <label htmlFor={id} className='text-black/40 mb-2 inline-block'>{label}</label>
+                <input
+                    id={id}
+                    type="number"
+                    className='outline-none w-full bg-transparent py-1.5'
+                    placeholder='0'
+                    disabled={amountDisabled}
+                    value={amount}
+                    onChange={(e) =>{
+                        const value = e.target.value
+
+                        // Allow empty strings so users can clear input
+                        if (value === ""){
+                            onAmountChange(value)
+                            return
+                        }
+
+                        // Allow only valid numbers
+                        if (!isNaN(value)) {
+                            onAmountChange(value)
+                        }
+                    }}
+                />
+            </div>
+            <div className="w-1/2 flex flex-wrap justify-end text-right ">
+                <p className="text-black/40 b-2 w-full">Currency Type</p>
+                <select
+                    className='rounded-lg p-1 bg-gray-100 cursor-pointer outline-none'
+                    value={selectedCurrency}
+                    onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
+                    disabled={currencyDisabled}>
+                        {currencyOption.map((currency) => ( 
+                            <option key={currency} value={currency}>
+                                {currency}
+                            </option> ) )}
+                </select>
+            </div>
+        </div>
+    )
+}
+
+export default InputBox
