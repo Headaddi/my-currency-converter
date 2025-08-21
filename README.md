@@ -1,6 +1,9 @@
 # Currency Converter
 
-A simple React + Vite app that converts currency values in real-time using an API.
+A sleek and responsive React + Vite app that converts currency values in real-time using an API.
+
+## Live Demo
+Try it online here: [Currency Converter](https://my-currency-converter-xi.vercel.app/)
 
 ## Features
 - Convert between multiple currencies
@@ -37,3 +40,13 @@ A simple React + Vite app that converts currency values in real-time using an AP
 
 5. Run the development server:
     npm run dev
+
+## Usage
+1. Enter the amount you want to convert in the From field.
+2. Select the source currency from the dropdown.
+3. Select the target currency in the To field.
+4. Click CONVERT to see the result.
+5. Use the Swap button to quickly switch the “From” and “To” currencies.
+
+## App Screenshot
+![App Screenshot](src/assets/screenshot.png)
